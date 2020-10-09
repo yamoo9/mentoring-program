@@ -1,0 +1,13 @@
+@import "../config";
+
+@function getLayout($item, $key) {
+  $layout-item: map-get($layout, $item);
+  $value: map-get($layout-item, $key);
+  @return $value;
+}
+
+@function getTheme($type: light, $key) {
+  $themeType: map-get($theme, $type);
+  $value: map-get($themeType, $key);
+  @return $value;
+}

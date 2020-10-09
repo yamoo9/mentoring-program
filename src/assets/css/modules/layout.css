@@ -1,0 +1,52 @@
+.resetBoxModel {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 96rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex.xCenter {
+  justify-content: center;
+}
+
+.flex.xBetween {
+  justify-content: space-between;
+}
+
+.flex.xAround {
+  justify-content: space-around;
+}
+
+.flex.xEvenly {
+  justify-content: space-evenly;
+}
+
+.flex.yStart {
+  align-items: flex-start;
+}
+
+.flex.yCenter {
+  align-items: center;
+}
+
+.flex.yEnd {
+  align-items: flex-end;
+}
+
+.flex.yStretch {
+  align-items: stretch;
+}
+
+.flex.xyCenter {
+  justify-content: center;
+  align-items: center;
+}

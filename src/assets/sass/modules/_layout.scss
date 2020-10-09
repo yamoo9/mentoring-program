@@ -1,0 +1,22 @@
+@import "../utils/functions";
+
+.container {
+  max-width: getLayout(container, max-width);
+  margin: getLayout(container, margin);
+}
+
+.flex {
+  display: flex;
+
+  &.xCenter { justify-content: center; }
+  &.xBetween { justify-content: space-between; }
+  &.xAround { justify-content: space-around; } 
+  &.xEvenly { justify-content: space-evenly; } 
+  
+  &.yStart { align-items: flex-start; } 
+  &.yCenter { align-items: center; } 
+  &.yEnd { align-items: flex-end; } 
+  &.yStretch { align-items: stretch; } 
+  &.xyCenter { justify-content: center; align-items: center; }
+
+}

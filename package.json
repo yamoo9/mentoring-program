@@ -1,0 +1,63 @@
+{
+  "name": "mentoring-program",
+  "version": "1.0.0",
+  "description": "이듬(E.UID) 멘토링 프로그램",
+  "private": "true",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "autoprefixer": "^10.0.1",
+    "cross-var": "^1.1.0",
+    "dotenv-cli": "^4.0.0",
+    "live-server": "^1.2.1",
+    "parcel": "^2.0.0-nightly.420",
+    "postcss": "^8.1.1",
+    "posthtml-doctype": "^1.1.1",
+    "posthtml-img-autosize": "^0.1.5",
+    "posthtml-modules": "^0.6.2",
+    "rimraf": "^3.0.2",
+    "sass": "^1.27.0"
+  },
+  "scripts": {
+    "clean": "dotenv -- cross-var rimraf -rf .parcel-cache dist build parcel-bundle-reports",
+    "dev": "npm run clean && dotenv -- cross-var parcel %PARCEL_ENTRIES% --port %PARCEL_PORT%",
+    "build": "npm run clean && npm run build:process",
+    "build:process": "PARCEL_BUNDLE_ANALYZER=1 dotenv -- cross-var parcel build %PARCEL_ENTRIES% --public-url %PARCEL_PUBLIC_URL% --dist-dir %PARCEL_DIST_DIR% --no-cache --no-source-maps --no-scope-hoist --detailed-report",
+    "build:server": "npm run build && dotenv -- cross-var live-server %BUILD_SERVER%",
+    "build:analyzer": "npm run build && dotenv -- cross-var live-server %BUILD_ANALYZER%"
+  },
+  "alias": {
+    "jquery": {
+      "global": "$"
+    },
+    "lodash": {
+      "global": "_"
+    }
+  },
+  "targets": {
+    "app": {
+      "engines": {
+        "browsers": "> 1%"
+      }
+    },
+    "appModern": {
+      "engines": {
+        "browsers": "Chrome 70"
+      }
+    }
+  },
+  "keywords": [
+    "euid",
+    "mentoring",
+    "parcel"
+  ],
+  "author": "야무 <yamoo9@euid.dev>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yamoo9/mentoring-program.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yamoo9/mentoring-program/issues"
+  },
+  "homepage": "https://github.com/yamoo9/mentoring-program#readme"
+}

@@ -1,0 +1,49 @@
+@import "../utils/functions";
+@import "../utils/mixins";
+
+/* -------------------------------------------------------------------------- */
+
+// 선택 영역 설정
+@include settingSelection();
+
+// :root 요소의 rem 단위 기본 값 설정 및 스크롤바 Y축 표시 설정
+@include settingRoot();
+
+// 포커스 표시 상태 설정
+@include settingFocusVisible();
+
+// 비활성화 요소 마우스 커서 설정
+@include settingDisabled();
+
+// body를 포함한 모든 요소의 box-sizing 설정
+@include inheritBoxSizing(body, border-box);
+
+// button 요소 안에 포함된 모든 요소의 포인터 이벤트 설정
+// 예: button 안에 포함된 svg, path, use 등 요소에 이벤트가 발생하는 경우 전파 차단 설정
+@include settingPointerEvents(button, none);
+
+/* -------------------------------------------------------------------------- */
+
+$theme-mode: light;
+
+body {
+  margin: 0;
+  font: 1.6rem/1.5 SpoqaHanSans, sans-serif;
+  background: getTheme($theme-mode, background);
+  color: getTheme($theme-mode, color);
+}
+
+// 내비게이션 기본 링크 스타일
+nav a {
+  @include resetLinkA();
+}
+
+// a 요소 img 하단 공간 제거
+a img {
+  @include resetImg();
+}
+
+// fieldset 요소 공간 제거
+fieldset {
+  @include resetBoxModel();
+}

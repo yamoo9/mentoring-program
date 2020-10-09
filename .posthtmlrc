@@ -1,0 +1,15 @@
+{
+  "plugins": {
+    "posthtml-modules": {
+      "root": "./src",
+      "tag": "include",
+      "attribute": "src"
+    },
+    "posthtml-img-autosize": {
+      "root": "./src/assets/images"
+    },
+    "posthtml-doctype": { 
+      "doctype": "HTML 5" 
+    }
+  }
+}
