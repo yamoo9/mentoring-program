@@ -19,21 +19,15 @@
 
   <body>
 
-    <header class="appHeader">
-      <div class="container flex xBetween">
-        <h1 class="appHeader__title">이듬(E.UID) 멘토링 프로그램</h1>
+    <include
+      src="/includes/appHeader.html"
+      locals='{
+      "headline": "이듬(E.UID) 멘토링 프로그램",
+      "buttonLabel": "메뉴 열기"
+      }'>
 
-        <button class="appHeader__button button">
-          <svg height="21" viewbox="0 0 21 21" width="21">
-            <g fill="none" fill-rule="evenodd" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m4.5 7.5h12" />
-              <path d="m4.498 10.5h11.997" />
-              <path d="m4.5 13.5h11.995" />
-            </g>
-          </svg>
-        </button>
-      </div>
-    </header>
+      <!-- <p>이 곳에 작성된 내용은 content 영역으로 삽입됩니다.</p> -->
+    </include>
 
   </body>
 

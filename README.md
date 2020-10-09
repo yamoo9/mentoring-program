@@ -4,84 +4,74 @@
 
 <br>
 
-## ☕︎ 프리페어링
+## ☕︎ 인클루드 HTML
 
-### 1. Node.js 설치
+프로젝트는 [posthtml-modules](https://www.npmjs.com/package/posthtml-modules)을 사용해 HTML 문서에 다른 HTML 문서를 포함(include)할 수 있습니다.
 
-[Node.js](https://nodejs.org/ko/)를 컴퓨터 OS에 설치합니다.
-설치 후 명령어 환경(CLI)에서 다음 명령을 입력했을 때 명령이 실행되어야 합니다.
+### 사용 예시
 
-```sh
-$ node -v # Node.js 버전 출력
-$ npm -v  # NPM 버전 출력
+[./src/includes/appHeader.html](./src/includes/appHeader.html) 파일 코드
+
+```html
+<header class="appHeader">
+  <div class="container flex xBetween">
+    <h1 class="appHeader__title">{{headline}}</h1>
+    <button class="appHeader__button button" aria-label="{{buttonLabel}}">
+      <svg height="21" viewbox="0 0 21 21" width="21">
+        <g fill="none" fill-rule="evenodd" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m4.5 7.5h12" />
+          <path d="m4.498 10.5h11.997" />
+          <path d="m4.5 13.5h11.995" />
+        </g>
+      </svg>
+    </button>
+
+    <content/>
+  </div>
+</header>
 ```
 
-### 2. 의존 모듈 설치
+[./src/index.html](./src/index.html) 파일 코드
 
-NPM 설치(`install`) 명령을 실행해 프로젝트의 의존 모듈(dependency modules)을 설치합니다.
+```html
+<body>
 
-```sh
-$ npm install
+  <!-- 앱 헤더 include -->
+  <include
+    src="/includes/appHeader.html"
+    locals='{
+    "headline": "이듬(E.UID) 멘토링 프로그램",
+    "buttonLabel": "메뉴 열기"
+    }'>
+
+    <!-- <p>이 곳에 작성된 내용은 content 영역으로 삽입됩니다.</p> -->
+  </include>
+
+</body>
 ```
 
-프로젝트에 사용되는 의존 모듈 정보는 [package.json](./package.json) 파일을 통해 확인할 수 있습니다.
+### 결과
 
-```js
-{
-  "devDependencies": {
-    // 크로스 플랫폼(windows, osx, linux) 도구
-    "rimraf": "^3.0.2",
-    "dotenv-cli": "^4.0.0",
-    "cross-var": "^1.1.0",
-    // Post HTML
-    "posthtml-doctype": "^1.1.1",
-    "posthtml-img-autosize": "^0.1.5",
-    "posthtml-modules": "^0.6.2",
-    // Post CSS
-    "postcss": "^8.1.1",
-    "autoprefixer": "^10.0.1",
-    // Sass
-    "sass": "^1.27.0",
-    // Babel
-    "@babel/core": "^7.11.6",
-    // 라이브 서버
-    "live-server": "^1.2.1",
-  }
-}
-```
+```html
+<body>
 
-### 3. 환경 변수
+  <header class="appHeader">
+    <div class="container flex xBetween">
+      <h1 class="appHeader__title">이듬(E.UID) 멘토링 프로그램</h1>
 
-`.env.dev` 파일 이름을 `.env`로 변경합니다.
+      <button class="appHeader__button button" aria-label="메뉴 열기">
+        <svg height="21" viewBox="0 0 21 21" width="21">
+          <g fill="none" fill-rule="evenodd" stroke="#2a2e3b" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m4.5 7.5h12"></path>
+            <path d="m4.498 10.5h11.997"></path>
+            <path d="m4.5 13.5h11.995"></path>
+          </g>
+        </svg>
+      </button>
 
-<br>
+      <!-- <p>이 곳에 작성된 내용은 content 영역으로 삽입됩니다.</p> -->
+    </div>
+  </header>
 
-## ☕︎ 개발/빌드 명령
-
-### 개발
-
-프로젝트 개발을 시작하려면 `dev` 명령을 실행합니다.
-
-```sh
-$ npm run dev
-```
-
-### 빌드
-
-프로젝트를 빌드 하려면 `build` 명령을 실행합니다.
-
-```sh
-$ npm run build
-```
-
-프로젝트를 빌드 한 후, 빌드된 결과를 브라우저에서 확인하려면 `build:server` 명령을 실행합니다.
-
-```sh
-$ npm run build:server
-```
-
-프로젝트를 빌드 한 후, 분석된 빌드 결과를 브라우저에서 확인하려면 `build:analyzer` 명령을 실행합니다.
-
-```sh
-$ npm run build:analyzer
+</body>
 ```
